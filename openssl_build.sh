@@ -10,10 +10,10 @@ OUTPUT_PATH=${WORK_PATH}/openssl_3.2.1_${ANDROID_TARGET_ABI}
 OPENSSL_TMP_FOLDER=/tmp/openssl_${ANDROID_TARGET_ABI}
 mkdir -p ${OPENSSL_TMP_FOLDER}
 cp -r ${OPENSSL_SOURCES_PATH}/* ${OPENSSL_TMP_FOLDER}
+export CFLAGS="-fPIC ${CFLAGS}"
 
 function build_library {
     mkdir -p ${OUTPUT_PATH}
-    export CFLAGS="-fPIC"
     make && make install
     rm -rf ${OPENSSL_TMP_FOLDER}
     rm -rf ${OUTPUT_PATH}/bin
