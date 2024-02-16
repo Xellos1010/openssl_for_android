@@ -13,6 +13,7 @@ cp -r ${OPENSSL_SOURCES_PATH}/* ${OPENSSL_TMP_FOLDER}
 
 function build_library {
     mkdir -p ${OUTPUT_PATH}
+    export CFLAGS="-fPIC"
     make && make install
     rm -rf ${OPENSSL_TMP_FOLDER}
     rm -rf ${OUTPUT_PATH}/bin
